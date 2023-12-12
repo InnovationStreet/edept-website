@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // }
 
     // Email details
-    $to = "admissions@edept.co";
+    // $to = "admissions@edept.co";
+    $to  = "dhruvsoni7220@gmail.com";
     $subject = "New Lead Generate for Chandigarh University";
 
     // Email content (custom template)
