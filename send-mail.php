@@ -21,17 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Email details
     $to = "admissions@edept.co";
-    $subject = "Hello";
+    $subject = "New Lead Generate for Chandigarh University";
 
     // Email content (custom template)
     $message = "
         <html>
         <head>
-            <title>Hello Email</title>
+            <title>New Lead</title>
         </head>
         <body>
             <h2>Hello TeamEdept!</h2>
-            <p>You have provided the following information:</p>
+            <p>New lead generated with following information:</p>
             <ul>
                 <li>Name: $name</li>
                 <li>Email: $email</li>
