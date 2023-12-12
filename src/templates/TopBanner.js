@@ -29,7 +29,7 @@ function TopBanner() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if(!checked) return false;
     try {
       console.log(formData);
       const response = axios.post('https://onlinecu.edept.co/send-mail.php', {
@@ -359,17 +359,7 @@ function TopBanner() {
                         type="submit"
                         name="btnRegisterNow"
                         value="Register Now"
-                        onClick={() => {
-                          // Handle the button click logic here
-                          if (checked) {
-                            // Do something when the checkbox is checked
-                            console.log("Button clicked");
-                            handleSubmit()
-                          } else {
-                            // Do something when the checkbox is not checked
-                            console.log("Checkbox not checked");
-                          }
-                        }}
+                        onClick={handleSubmit}
                         id="btnRegisterNow"
                         className={`btn btn-primary mb-0 w-100 ${
                           !checked && "disabled"
