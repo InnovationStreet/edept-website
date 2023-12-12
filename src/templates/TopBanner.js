@@ -49,9 +49,9 @@ function TopBanner() {
           .post("https://onlinecu.edept.co/send-mail.php", {
             name: formData.name,
             email: formData.email,
-            mobile: formData.mobile,
+            phone: formData.mobile,
             city: formData.city,
-            course: formData.course,
+            program: formData.course,
             dob: formData.dobMonth + "/" + formData.dobDay + "/" + formData.dobYear,
           })
           .then((res) => {
