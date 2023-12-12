@@ -3,7 +3,7 @@ import "../App.css";
 function OurPrograms() {
   return (
     <section className="ugpg-programs position-relative p-80" id="programs">
-      <div className="container ugpg-programs-content" >
+      <div className="container ugpg-programs-content">
         {/* <div className="main-heading text-center mb-5">
           <h2>
             All-inclusive <br />
@@ -25,28 +25,38 @@ function OurPrograms() {
             <div className="col-xl-9">
               <div className="row gy-4">
                 <div className="col-lg-4 col-sm-6 equal-height">
-                  <div className="card program-card border-0 overflow-hidden">
-                    <div className="card-body">
-                      <div className="h-60">
-                        <h4>
+                  <div className="card program-card border-0 overflow-hidden bg-danger ">
+                    <div className="card-body ">
+                      <div className="h-60 ">
+                        <h4 className="text-white">
                           3 Years Online BBA Program with specialization in
                           Business Analytics
                         </h4>
                       </div>
                       <ul className="p-0 m-0">
-                        <li>
+                        <li className="text-white">
                           Eligibility:
-                          <span> 10+2 with minimum 50% (Recognized Board)</span>
+                          <span>
+                            {" "}
+                            10+2 from any stream with minimum 50% marks, from a
+                            recognized board/university/council.
+                          </span>
                         </li>
-                        <li>
+                        <li className="text-white">
                           Duration:<span> 3 years (6 semesters)</span>
                         </li>
-                        <li className="fw-bold mt-2">
+                        <li className="fw-bold mt-2 text-white">
                           Highlights:
                           <ul className="p-0 m-0 ">
-                            <li> Live lectures by KPMG in India</li>
-                            <li> Internship and Job placement assistance</li>
-                            <li>
+                            <li className="text-white">
+                              {" "}
+                              Live lectures by KPMG in India
+                            </li>
+                            <li className="text-white">
+                              {" "}
+                              Internship and Job placement assistance
+                            </li>
+                            <li className="text-white">
                               Learn top analytical tools like Tableau, My SQL,
                               Python, any many more
                             </li>
@@ -62,10 +72,10 @@ function OurPrograms() {
                     </div>
                     <div className="card-footer">
                       <div className="row g-0 d-flex align-items-center">
-                        <div className="col-7" style={{ paddingLeft: "15px" }}>
+                        <div className="col-7" style={{ paddingLeft: "10px" }}>
                           <img src="img/prize-tag.svg" alt="tag" />
                           <span>
-                            <b>xyx</b>/Sem
+                            <b>INR 31,667</b>/per sem
                           </span>
                         </div>
                         <div
@@ -85,28 +95,40 @@ function OurPrograms() {
                 </div>
 
                 <div className="col-lg-4 col-sm-6">
-                  <div className="card program-card border-0 overflow-hidden">
+                  <div className="card program-card border-0 overflow-hidden  bg-danger ">
                     <div className="card-body">
                       <div className="h-60">
-                        <h4>
+                        <h4 className="text-white">
                           2 Years Online MBA Program with specialization in
                           Business Analytics
                         </h4>
                       </div>
                       <ul className="p-0 m-0">
-                        <li>
+                        <li className="text-white">
                           Eligibility:
-                          <span> : Bachelors (Recognized)</span>
+                          <span>
+                            {" "}
+                            : Bachelor's degree from any stream with minimum 50%
+                            marks from recognized University/Institution.
+                            Graduates from professional programs like CA, ICWA
+                            etc can also apply.
+                          </span>
                         </li>
-                        <li>
-                          Duration:<span> 2 years</span>
+                        <li className="text-white">
+                          Duration:<span> 2 years (4 semesters)</span>
                         </li>
-                        <li className="fw-bold mt-2">
+                        <li className="fw-bold mt-2 text-white">
                           Highlights:
                           <ul className="p-0 m-0">
-                            <li> Live lectures by KPMG in India</li>
-                            <li> Internship and Job placement assistance</li>
-                            <li>
+                            <li className="text-white">
+                              {" "}
+                              Live lectures by KPMG in India
+                            </li>
+                            <li className="text-white">
+                              {" "}
+                              Internship and Job placement assistance
+                            </li>
+                            <li className="text-white">
                               Learn top analytical tools like Tableau, My SQL,
                               Python, any many more
                             </li>
@@ -123,10 +145,10 @@ function OurPrograms() {
                     </div>
                     <div className="card-footer">
                       <div className="row g-0 d-flex align-items-center">
-                        <div className="col-7" style={{ paddingLeft: "15px" }}>
+                        <div className="col-7" style={{ paddingLeft: "10px" }}>
                           <img src="img/prize-tag.svg" alt="tag" />
                           <span>
-                            <b>xyx</b>/Sem
+                            <b>INR 50,000</b>/per sem
                           </span>
                         </div>
                         <div

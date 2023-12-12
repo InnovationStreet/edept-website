@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.golden-strip {
+  position: absolute;
+  top: 0;
+  /* left: 50%; */
+  width: 15%; /* Adjust the width of the strip as needed */
+  height: 100%;
+  /* background-color: goldenrod;  */
+  /* transform: translateX(-50%); */
+
+  background: #ebe3de;
+  transform: skewX(165deg);
+  left: 15%;
+}
+/* 
+.mentor-section .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 154px;
+  background: #ebe3de;
+  transform: skewX(165deg);
+  left: 54px;
+} */

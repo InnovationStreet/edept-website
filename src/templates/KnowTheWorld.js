@@ -10,7 +10,7 @@ function KnowTheWorld() {
             talks about us
           </h2>
           <p>
-            An internationally-recognized university, CU has been in limelight
+            An internationally-recognized university, Chandigarh University has been in limelight
             for numerous positive reasons.
           </p>
         </div>

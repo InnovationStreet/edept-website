@@ -16,6 +16,7 @@ import Header from "./templates/Header";
 import TopBanner from "./templates/TopBanner";
 import OurNumbers from "./templates/OurNumbers";
 import WhyStudyOnline from "./templates/WhyStudyOnline";
+import TrainerProfile from "./templates/TrainersProfile";
 // import SocialLinks from "./templates/SocialLinks";
 // import AttendCampus from "./templates/AttendCampus";
 
@@ -43,6 +44,7 @@ function App() {
         <Faculty />
         {/* <AttendCampus /> */}
         <KnowTheWorld />
+        {/* <TrainerProfile/> */}
         <OurNumbers />
         {/* <SocialLinks /> */}
         <Footer />

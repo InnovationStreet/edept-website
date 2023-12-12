@@ -2,10 +2,10 @@ import "../App.css";
 
 function WhyStudyOnline() {
   return (
-    <section className="program-outcomes p-80">
+    <section className="program-outcomes p-80  bg-danger">
       <div className="container">
         <div
-          className="main-heading text-center text-black"
+          className="main-heading text-center text-white"
           style={{ maxWidth: "702px" }}
         >
           <h2>
@@ -19,13 +19,20 @@ function WhyStudyOnline() {
             programs.
             <br />
             <br />
-            Get the flexibility to study any time and from anywhere
-            <br />
-            Get the freedom to plan your studies at your own pace.
+            <h6>
+            <i>
+              <b>Get the flexibility to study any time and from anywhere</b>
+            </i>
+            </h6>
+            <h6>
+            <i>
+              <b>Get the freedom to plan your studies at your own pace.</b>
+            </i>
+            </h6>
           </p>
         </div>
 
-        <section id="" className="py-2 rank-section">
+        <section id="" className="py-2 rank-section text-white">
           <div className="container">
             <div className="row">
               <div className="col-12">
@@ -80,7 +87,7 @@ function WhyStudyOnline() {
                               </div>
                               <p>
                                 <span>amongst </span>Top 5% Institutions of
-                                India for receiving NAAC.
+                                India for receiving NAAC
                               </p>
                             </div>
                             <div className="qs-ranking__content  col-12 col-md-2 mb-3">
@@ -96,11 +103,9 @@ function WhyStudyOnline() {
                             </div>
                             <div className="qs-ranking__content  col-12 col-md-2 mb-3">
                               <span>With</span>
-                              <div className="top-no">
-                              13,000+ 
-                              </div>
+                              <div className="top-no">13,000+</div>
                               <p>
-                              <span>of the</span>Total student strength.
+                                <span>of the</span>Total student strength
                               </p>
                             </div>
                           </div>
@@ -114,7 +119,7 @@ function WhyStudyOnline() {
           </div>
         </section>
 
-        <div className="center slider row d-flex justify-content-center">
+        <div className="center slider row d-flex justify-content-center text-white">
           <div className="sl-item col col-lg-12 col-sm-12">
             <div className="text-center">
               {/* <span class="nt-icons position-relative mx-4 mb-2">
@@ -126,6 +131,8 @@ function WhyStudyOnline() {
                 Chandigarh University has notable alumni working in top MNC's
                 like Google and Reliance Industries.
               </p>
+              <img className="mx-2" src="img/google-logo.webp" width={30}/>
+              <img className="mx-2" src="img/reliance-logo.webp" width={30}/>
             </div>
           </div>
         </div>

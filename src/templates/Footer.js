@@ -27,7 +27,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="container">
+      {/* <div className="container">
         <div className="ft-social pt-3 mt-3">
           <div className="row">
             <div className="col-md-12 text-center">
@@ -37,7 +37,7 @@ function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* <div className="allNotification">
       <button type="button" className="allNotification__icon">
         <i className="fa-regular fa-bell" />

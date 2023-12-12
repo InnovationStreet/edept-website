@@ -1,61 +1,20 @@
-import { useState } from "react";
-import axios from "axios";
 import "../App.css";
+import * as React from "react";
 
 function TopBanner() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    program: '',
-    day: '',
-    month: '',
-    city: '',
-    year: '',
-  });
+  // Dhruv Soni - start - logic for checkbox
+  const [checked, setChecked] = React.useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleChange = () => {
+    setChecked(!checked);
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      console.log(formData);
-      const response = axios.post('https://onlinecu.edept.co/send-mail.php', {
-        name:formData.name,
-        email : formData.email,
-        phone:formData.phone,
-        city:formData.city,
-        program : formData.program,
-        dob : formData.month+'/'+formData.day+'/'+formData.year
-      }).then((res)=>{
-        alert("Registration successful");
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          program: '',
-          day: '',
-          city : '',
-          month: '',
-          year: '',
-        });
-      });
-
-      const data = await response.json();
-      console.log('Response from PHP backend:', data);
-    } catch (error) {
-      console.error('Error sending data:', error);
-    }
-  };
+  // Dhruv Soni - end - logic for checkbox
 
   return (
     <section className="hero-banner position-relative" id="home">
       <div
-        className="banner-overlay position-absolute top-0 start-0 end-0 bottom-0 pt-5"
+        // top-0 -> top-1 align section at bottom
+        className="banner-overlay position-absolute top-1 pb-4 start-0 end-0 bottom-0 pt-5"
         style={{ zIndex: 1 }}
       >
         <div className="container">
@@ -64,9 +23,10 @@ function TopBanner() {
             id="signup"
           >
             <form
-            onSubmit={e => e.preventDefault()}
-            noValidate
-        autoComplete="off"
+              method="post"
+              action="./"
+              onsubmit="javascript:return WebForm_OnSubmit();"
+              id="form1"
             >
               <div className="aspNetHidden">
                 <input
@@ -116,14 +76,12 @@ function TopBanner() {
                     <div className="mb-2 col-md-12 col-6">
                       <div className="position-relative">
                         <input
-                          name="name"
+                          name="txtStudentName"
                           type="text"
                           maxLength={95}
-                          id="name"
+                          id="txtStudentName"
                           className="form-control"
                           placeholder="Name"
-                          required
-                          value={formData.name} onChange={handleChange}
                         />
                         <span
                           id="rfvStudentName"
@@ -136,13 +94,11 @@ function TopBanner() {
                     <div className="mb-2 col-md-12 col-6">
                       <div className="position-relative">
                         <input
-                          name="email"
+                          name="txtEmailID"
                           type="text"
-                          id="email"
+                          id="txtEmailID"
                           className="form-control"
                           placeholder="Email Address"
-                          required
-                          value={formData.email} onChange={handleChange}
                         />
                         <span id="rfvEmailId" style={{ visibility: "hidden" }}>
                           Enter Email Id
@@ -160,14 +116,12 @@ function TopBanner() {
                     <div className="mb-2 col-md-12 col-6">
                       <div className="position-relative">
                         <input
-                          name="phone"
+                          name="txtMobileNo"
                           maxLength={20}
-                          id="phone"
+                          id="txtMobileNo"
                           className="form-control"
                           type="tel"
                           placeholder="Mobile Number"
-                          required
-                          value={formData.phone} onChange={handleChange}
                         />
                         <span id="rfvMobileNo" style={{ visibility: "hidden" }}>
                           In correct Mobile Number
@@ -188,13 +142,11 @@ function TopBanner() {
                     <div className="mb-2 col-md-12 col-6">
                       <input type="hidden" name="hfCity" id="hfCity" />
                       <input
-                        name="city"
+                        name="txtCity"
                         type="text"
-                        id="city"
+                        id="txtCity"
                         className="form-control"
                         placeholder="Enter Your City"
-                        required
-                        value={formData.city} onChange={handleChange}
                       />
                       <span id="rfvCity" style={{ visibility: "hidden" }}>
                         Enter City
@@ -203,17 +155,15 @@ function TopBanner() {
                     <div className="mb-3 col-md-12 col-6">
                       <div className="select_custom position-relative">
                         <select
-                          name="program"
-                          id="program"
+                          name="ddlProgram"
+                          id="ddlProgram"
                           className="form-select chgColor"
-                          value={formData.program} onChange={handleChange}
-                          required
                         >
                           <option value={0}>Select Program</option>
-                          <option value={'Online MBA in Business Analytics'}>
+                          <option value={1}>
                             Online MBA in Business Analytics
                           </option>
-                          <option value={'Online BBA in Business Analytics'}>
+                          <option value={2}>
                             Online BBA in Business Analytics
                           </option>
                         </select>
@@ -239,12 +189,9 @@ function TopBanner() {
                     <div className="mb-3 col-4">
                       <div className="select_custom position-relative">
                         <select
-                          name="day"
-                          id="day"
+                          name="ddlDay"
+                          id="ddlDay"
                           className="form-select chgColor"
-                          value={formData.day} onChange={handleChange}
-                          required
-
                         >
                           <option value={0}>DD</option>
                           {[...Array(31)].map((e, i) => (
@@ -260,13 +207,9 @@ function TopBanner() {
                       {/* <label for="inputEmail4">Date</label> */}
                       <div className="select_custom position-relative">
                         <select
-                          name="month"
-                          id="month"
+                          name="ddlMnt"
+                          id="ddlMnt"
                           className="form-select chgColor"
-                          value={formData.month} onChange={handleChange}
-                          required
-
-
                         >
                           <option value={0}>MM</option>
 
@@ -283,12 +226,9 @@ function TopBanner() {
                       {/* <label for="inputEmail4">Date</label> */}
                       <div className="select_custom position-relative">
                         <select
-                          name="year"
-                          id="year"
+                          name="ddlyear"
+                          id="ddlyear"
                           className="form-select chgColor"
-                          value={formData.year} onChange={handleChange}
-                          required
-
                         >
                           <option value={0}>YYYY</option>
                           {[...Array(30)].map((e, i) => (
@@ -301,17 +241,70 @@ function TopBanner() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Dhruv Soni - start - add checkBox for terms condition */}
+                  {/*  */}
+                  <div
+                    style={{
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={handleChange}
+                      />
+
+                      <span
+                        style={{
+                          fontSize: "10px",
+                          fontWeight: "normal",
+                          color: "#666",
+                        }}
+                      >
+                        &nbsp; I agree to receive information from all
+                        electronic modes regarding the courses & other details.
+                      </span>
+                      {/* &nbsp; agree with terms and conditions */}
+                    </label>
+                  </div>
+                  {/* Dhruv Soni - end - add checkBox for terms condition */}
+
                   <div className="row">
                     <div className="mb-3 col-md-12 col-6">
+                      {/* <input
+                        type="submit"
+                        name="btnRegisterNow"
+                        value="Register Now"
+                        defaultValue="Register Now"
+                        onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("btnRegisterNow", "", true, "vgIDOL", "", false, false))'
+                        id="btnRegisterNow"
+                        className="btn btn-primary mb-0 w-100"
+                      /> */}
+
+                      {/* Dhruv Soni - Start - if checkBox selected then enable else disable */}
                       <input
                         type="submit"
                         name="btnRegisterNow"
                         value="Register Now"
+                        onClick={() => {
+                          // Handle the button click logic here
+                          if (checked) {
+                            // Do something when the checkbox is checked
+                            console.log("Button clicked");
+                          } else {
+                            // Do something when the checkbox is not checked
+                            console.log("Checkbox not checked");
+                          }
+                        }}
                         id="btnRegisterNow"
-                        disabled={!formData.name || !formData.email || !formData.phone || !formData.program || !formData.day || !formData.month || !formData.year}
-                        onClick={handleSubmit}
-                        className="btn btn-primary mb-0 w-100"
+                        className={`btn btn-primary mb-0 w-100 ${
+                          !checked && "disabled"
+                        }`}
+                        disabled={!checked}
                       />
+                      {/* Dhruv Soni - End - if checkBox selected then enable else disable */}
                     </div>
                     {/* <div className="mb-3 col-md-12 col-6">
                     <button
@@ -381,6 +374,7 @@ function TopBanner() {
                       type="submit"
                       name="btnSignIn"
                       defaultValue="Sign In"
+                      onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("btnSignIn", "", true, "LoginCUSET", "", false, false))'
                       id="btnSignIn"
                       className="form-control btn btn-primary"
                     />
@@ -436,34 +430,112 @@ function TopBanner() {
                         */}
             <div className="container h-100 position-relative d-flex align-items-center">
               <div className="banner-content">
-                <h2 className="mb-3">
+                <h2 class="mb-3">
                   Navigate your way towards a brighter future
                 </h2>
-                <p className="mb-4">
+                <p class="mb-4">
                   Industry Oriented course delivered by KPMG in India
                 </p>
-                <small className="mb-4 text-white">
+                {/* <small class="mb-4 text-white">
                   KPMG in India program brought to you in collaboration with
                   edept
-                </small>
+                </small> */}
                 <img
-                  width={220}
+                  width={180}
                   src="img/edept.jpeg"
                   className=" my-4"
                   alt="image"
                 />
-                <img
+                {/* <img
                   src="img/kpmg-logo-1.webp"
                   alt="chandigharh University logo"
-                  width={240}
+                  width={230}
                   className="mx-2"
-                />
-                <a className="btn btn-primary btn-lg my-4" href="#programs">
+                /> */}
+                {/* Second Image wrapped in a white rectangular box */}
+                <div className="bg-white p-3 d-inline-block mx-2">
+                  <img
+                    src="img/kpmg-logo-1.webp"
+                    alt="Chandigarh University logo"
+                    width={125}
+                    className="mx-2"
+                  />
+                </div>
+                <a className="btn btn-primary btn-lg my-4 " href="#programs">
                   Explore our Programs
                 </a>
-                {/* <div className="helpline d-flex flex-row align-items-center">
+                <p class="mb-4">
+                  Learn Top Tools like: Excel, SPSS, Python, Orange, Power BI,
+                  Tableau, MySQL
+                </p>
+                <div>
+                  <img
+                    src="img/Microsoft_Excel-logo.svg"
+                    alt="Chandigarh University logo"
+                    width={60}
+                  />
+                  <img
+                    src="img/spss-logo.webp"
+                    alt="Chandigarh University logo"
+                    width={60}
+                  />
+                  <img
+                    src="img/python-logo.webp"
+                    alt="Chandigarh University logo"
+                    width={35}
+                    className="mx-2"
+                  />
+                  <img
+                    src="img/orange-logo.webp"
+                    alt="Chandigarh University logo"
+                    width={75}
+                  />
+                  <img
+                    src="img/power-bi-logo.svg"
+                    alt="Chandigarh University logo"
+                    width={30}
+                    className="mx-2"
+                  />
+                  <img
+                    src="img/tableau-logo.webp"
+                    alt="Chandigarh University logo"
+                    width={30}
+
+                    className="mx-2"
+                  />
+                  <img
+                    src="img/MySQL-Logo.svg"
+                    alt="Chandigarh University logo"
+                    width={60}
+                    className="mx-1"
+                  />
+                </div>
+                {/* <div>
+                <img
+                    src="img/power-bi-logo.svg"
+                    alt="Chandigarh University logo"
+                    width={50}
+                    className="mx-4"
+                  />
+                  <img
+                    src="img/tableau-logo.webp"
+                    alt="Chandigarh University logo"
+                    width={50}
+
+                    className="mx-2"
+                  />
+                  <img
+                    src="img/MySQL-Logo.svg"
+                    alt="Chandigarh University logo"
+                    width={60}
+                    className="mx-4"
+                  />
+                </div> */}
+
+
+                {/* <div class="helpline d-flex flex-row align-items-center">
                                 <img src="img/phone-icon.svg" alt="phone">
-                                <div className="help-no mx-2">
+                                <div class="help-no mx-2">
                                     <small>Need Help?</small>
                                     <a href="tel:1800121388800">1800 1213 88800</a>
                                 </div>
@@ -471,16 +543,16 @@ function TopBanner() {
               </div>
             </div>
           </div>
-          {/*<div className="carousel-item sliderImg slider-img2 h-100" data-bs-interval="5000">
-                    <div className="container h-100 position-relative d-flex align-items-center">
-                        <div className="banner-content">
-                            <h2 className="mb-3">Global Learning at your pace & your place</h2>
-                            <p className="mb-4">Learn anytime and anywhere through blended pedagogies that equip you with the requisite professional & life skills</p>
-                            <a className="btn btn-primary btn-lg" href="#programs">Explore our Programs</a>
+          {/*<div class="carousel-item sliderImg slider-img2 h-100" data-bs-interval="5000">
+                    <div class="container h-100 position-relative d-flex align-items-center">
+                        <div class="banner-content">
+                            <h2 class="mb-3">Global Learning at your pace & your place</h2>
+                            <p class="mb-4">Learn anytime and anywhere through blended pedagogies that equip you with the requisite professional & life skills</p>
+                            <a class="btn btn-primary btn-lg" href="#programs">Explore our Programs</a>
                             
-          <div className="helpline d-flex flex-row align-items-center">
+          <div class="helpline d-flex flex-row align-items-center">
                                 <img src="img/phone-icon.svg" alt="phone">
-                                <div className="help-no mx-2">
+                                <div class="help-no mx-2">
                                     <small>Need Help?</small>
                                     <a href="tel:1800121388800">1800 1213 88800</a>
                                 </div>
@@ -490,13 +562,13 @@ function TopBanner() {
                     </div>
                 </div>*/}
         </div>
-        {/*<a className="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
+        {/*<a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
             </a>
-            <a className="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
+            <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
             </a>*/}
       </div>
     </section>
