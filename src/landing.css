@@ -1,0 +1,92 @@
+.rank-section {
+    background: var(--bs-off-white);
+  }
+  .rank-section .tab-content {
+    padding: 30px 70px;
+  }
+  .tab-content .blaze-slider .blaze-next,
+  .tab-content .blaze-slider .blaze-prev {
+    display: none;
+  }
+  .rank-section .nav-pills .nav-link {
+    position: relative;
+    padding: 18px 20px;
+    margin: 0 10px;
+    border-radius: 6px;
+    opacity: 0.5;
+    filter: invert(50%);
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+  }
+  .rank-section .nav-pills .nav-link.active {
+    opacity: 1;
+    filter: unset;
+    background: var(--bs-theme-pink);
+    box-shadow: 0 0 10px rgba(222, 33, 33, 0.8);
+  }
+  .rank-section .nav-pills .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 41%;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 7px solid var(--bs-theme-pink);
+  }
+
+  .qs-ranking__content {
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .rankings-slider .qs-ranking__content .top-no {
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: 700;
+    color: var(--bs-text-dark);
+    margin-bottom: 5px;
+  }
+  .rankings-slider .qs-ranking__content .top-no sup {
+    text-transform: none;
+    top: -18px;
+    left: -11px;
+    font-size: 55%;
+  }
+  .rankings-slider .qs-ranking__content span {
+    display: block;
+    font-size: 12px;
+    color: var(--bs-text-dark);
+    font-weight: normal;
+  }
+  .rankings-slider .qs-ranking__content p {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: normal;
+    text-transform: capitalize;
+    color: var(--bs-text-dark);
+    margin: 0;
+  }
+  .rankings-slider .qs-ranking__content p span {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+
+  .highlight-point {
+    margin-bottom: 35px;
+  }
+  .highlight-point h6 {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #fff;
+    background: #e0181e;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  .highlight-point p {
+    font-size: 14px;
+    line-height: 18px;
+    color: #fff;
+    max-width: 72%;
+  }
