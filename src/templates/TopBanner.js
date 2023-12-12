@@ -1,65 +1,83 @@
 import "../App.css";
-import * as React from "react";
 import axios from "axios";
+import React, { useState } from "react";
 
 function TopBanner() {
-  // Dhruv Soni - start - logic for checkbox
-  const [checked, setChecked] = React.useState(false);
-
-  const handleChange = () => {
-    setChecked(!checked);
-  };
-  // Dhruv Soni - end - logic for checkbox
-
-  const [formData, setFormData] = React.useState({
-    name: '',
-    email: '',
-    phone: '',
-    program: '',
-    day: '',
-    month: '',
-    city: '',
-    year: '',
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    city: "",
+    course: "",
+    dobDay: "",
+    dobMonth: "",
+    dobYear: "",
+    agree: false,
   });
 
-  const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!checked) return false;
-    try {
-      console.log(formData);
-      const response = axios.post('https://onlinecu.edept.co/send-mail.php', {
-        name:formData.name,
-        email : formData.email,
-        phone:formData.phone,
-        city:formData.city,
-        program : formData.program,
-        dob : formData.month+'/'+formData.day+'/'+formData.year
-      }).then((res)=>{
-        alert("Registration successful");
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          program: '',
-          day: '',
-          city : '',
-          month: '',
-          year: '',
-        });
-      });
+    const newErrors = {};
+    // Simple validation
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
+    if (!formData.city.trim()) newErrors.city = "City is required";
+    if (!formData.course.trim()) newErrors.course = "Course is required";
+    if (!formData.dobDay || !formData.dobMonth || !formData.dobYear) {
+      newErrors.dob = "Date of birth is required";
+    }
+    if (!formData.agree) newErrors.agree = "You must agree to register";
 
-      const data = await response.json();
-      console.log('Response from PHP backend:', data);
-    } catch (error) {
-      console.error('Error sending data:', error);
+    if (Object.keys(newErrors).length === 0) {
+      // Form is valid, you can submit the data or perform other actions
+      console.log("Form submitted:", formData);
+
+      try {
+        console.log(formData);
+        const response = axios
+          .post("https://onlinecu.edept.co/send-mail.php", {
+            name: formData.name,
+            email: formData.email,
+            mobile: formData.mobile,
+            city: formData.city,
+            course: formData.course,
+            dob: formData.dobMonth + "/" + formData.dobDay + "/" + formData.dobYear,
+          })
+          .then((res) => {
+            alert("Registration successful");
+            setFormData({
+              name: "",
+              email: "",
+              mobile: "",
+              city: "",
+              course: "",
+              dobDay: "",
+              dobMonth: "",
+              dobYear: "",
+              agree: false,
+            });
+          });
+
+        const data = await response.json();
+        console.log("Response from PHP backend:", data);
+      } catch (error) {
+        console.error("Error sending data:", error);
+      }
+    } else {
+      setErrors(newErrors);
     }
   };
-
 
   return (
     <section className="hero-banner position-relative" id="home">
@@ -74,9 +92,9 @@ function TopBanner() {
             id="signup"
           >
             <form
-             onSubmit={e => e.preventDefault()}
-             noValidate
-         autoComplete="off"
+              onSubmit={(e) => e.preventDefault()}
+              noValidate
+              autoComplete="off"
               id="form1"
             >
               <div className="aspNetHidden">
@@ -126,7 +144,7 @@ function TopBanner() {
                   <div className="row g-2">
                     <div className="mb-2 col-md-12 col-6">
                       <div className="position-relative">
-                      <input
+                        <input
                           name="name"
                           type="text"
                           maxLength={95}
@@ -134,8 +152,12 @@ function TopBanner() {
                           className="form-control"
                           placeholder="Name"
                           required
-                          value={formData.name} onChange={handleFormChange}
+                          value={formData.name}
+                          onChange={handleChange}
                         />
+                        {errors.name && (
+                          <p className="text-danger mb-0">{errors.name}</p>
+                        )}
                         <span
                           id="rfvStudentName"
                           style={{ visibility: "hidden" }}
@@ -146,15 +168,19 @@ function TopBanner() {
                     </div>
                     <div className="mb-2 col-md-12 col-6">
                       <div className="position-relative">
-                      <input
+                        <input
                           name="email"
                           type="text"
                           id="email"
                           className="form-control"
                           placeholder="Email Address"
                           required
-                          value={formData.email} onChange={handleFormChange}
+                          value={formData.email}
+                          onChange={handleChange}
                         />
+                        {errors.email && (
+                          <p className="text-danger mb-0">{errors.email}</p>
+                        )}
                         <span id="rfvEmailId" style={{ visibility: "hidden" }}>
                           Enter Email Id
                         </span>
@@ -170,16 +196,20 @@ function TopBanner() {
                     </div>
                     <div className="mb-2 col-md-12 col-6">
                       <div className="position-relative">
-                      <input
-                          name="phone"
+                        <input
+                          name="mobile"
                           maxLength={20}
                           id="phone"
                           className="form-control"
                           type="tel"
                           placeholder="Mobile Number"
                           required
-                          value={formData.phone} onChange={handleFormChange}
+                          value={formData.mobile}
+                          onChange={handleChange}
                         />
+                        {errors.mobile && (
+                          <p className="text-danger mb-0">{errors.mobile}</p>
+                        )}
                         <span id="rfvMobileNo" style={{ visibility: "hidden" }}>
                           In correct Mobile Number
                         </span>
@@ -205,36 +235,44 @@ function TopBanner() {
                         className="form-control"
                         placeholder="Enter Your City"
                         required
-                        value={formData.city} onChange={handleFormChange}
+                        value={formData.city}
+                        onChange={handleChange}
                       />
+                      {errors.city && (
+                        <p className="text-danger mb-0">{errors.city}</p>
+                      )}
                       <span id="rfvCity" style={{ visibility: "hidden" }}>
                         Enter City
                       </span>
                     </div>
                     <div className="mb-3 col-md-12 col-6">
                       <div className="select_custom position-relative">
-                      <select
-                          name="program"
+                        <select
+                          name="course"
                           id="program"
                           className="form-select chgColor"
-                          value={formData.program} onChange={handleFormChange}
+                          value={formData.course}
+                          onChange={handleChange}
                           required
                         >
                           <option value={0}>Select Program</option>
-                          <option value={'Online MBA in Business Analytics'}>
+                          <option value={"Online MBA in Business Analytics"}>
                             Online MBA in Business Analytics
                           </option>
-                          <option value={'Online BBA in Business Analytics'}>
+                          <option value={"Online BBA in Business Analytics"}>
                             Online BBA in Business Analytics
                           </option>
                         </select>
+                        {errors.course && (
+                          <p className="text-danger mb-0">{errors.course}</p>
+                        )}
                         <span id="rfvProgram" style={{ visibility: "hidden" }}>
                           Select Program
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div className="row g-2">
+                  <div className="row g-2 mb-3">
                     <div className="col-12">
                       <h5
                         style={{
@@ -247,15 +285,15 @@ function TopBanner() {
                         Date of birth?
                       </h5>
                     </div>
-                    <div className="mb-3 col-4">
+                    <div className="mb-0 col-4">
                       <div className="select_custom position-relative">
-                      <select
-                          name="day"
+                        <select
+                          name="dobDay"
                           id="day"
                           className="form-select chgColor"
-                          value={formData.day} onChange={handleFormChange}
+                          value={formData.dobDay}
+                          onChange={handleChange}
                           required
-
                         >
                           <option value={0}>DD</option>
                           {[...Array(31)].map((e, i) => (
@@ -267,17 +305,16 @@ function TopBanner() {
                         </span>
                       </div>
                     </div>
-                    <div className="mb-3 col-4">
+                    <div className="mb-0 col-4">
                       {/* <label for="inputEmail4">Date</label> */}
                       <div className="select_custom position-relative">
-                      <select
-                          name="month"
+                        <select
+                          name="dobMonth"
                           id="month"
                           className="form-select chgColor"
-                          value={formData.month} onChange={handleFormChange}
+                          value={formData.dobMonth}
+                          onChange={handleChange}
                           required
-
-
                         >
                           <option value={0}>MM</option>
 
@@ -290,16 +327,16 @@ function TopBanner() {
                         </span>
                       </div>
                     </div>
-                    <div className="mb-3 col-4">
+                    <div className="mb-0 col-4">
                       {/* <label for="inputEmail4">Date</label> */}
                       <div className="select_custom position-relative">
-                      <select
-                          name="year"
+                        <select
+                          name="dobYear"
                           id="year"
                           className="form-select chgColor"
-                          value={formData.year} onChange={handleFormChange}
+                          value={formData.dobYear}
+                          onChange={handleChange}
                           required
-
                         >
                           <option value={0}>YYYY</option>
                           {[...Array(30)].map((e, i) => (
@@ -311,6 +348,7 @@ function TopBanner() {
                         </span>
                       </div>
                     </div>
+                    {errors.dob && <p className="text-danger mb-0">{errors.dob}</p>}
                   </div>
 
                   {/* Dhruv Soni - start - add checkBox for terms condition */}
@@ -323,7 +361,8 @@ function TopBanner() {
                     <label>
                       <input
                         type="checkbox"
-                        checked={checked}
+                        name="agree"
+                        checked={formData.agree}
                         onChange={handleChange}
                       />
 
@@ -339,6 +378,9 @@ function TopBanner() {
                       </span>
                       {/* &nbsp; agree with terms and conditions */}
                     </label>
+                    {errors.agree && (
+                      <p className="text-danger mb-0">{errors.agree}</p>
+                    )}
                   </div>
                   {/* Dhruv Soni - end - add checkBox for terms condition */}
 
@@ -353,7 +395,6 @@ function TopBanner() {
                         id="btnRegisterNow"
                         className="btn btn-primary mb-0 w-100"
                       /> */}
-
                       {/* Dhruv Soni - Start - if checkBox selected then enable else disable */}
                       <input
                         type="submit"
@@ -361,10 +402,7 @@ function TopBanner() {
                         value="Register Now"
                         onClick={handleSubmit}
                         id="btnRegisterNow"
-                        className={`btn btn-primary mb-0 w-100 ${
-                          !checked && "disabled"
-                        }`}
-                        disabled={!checked || !formData.name || !formData.email || !formData.phone || !formData.program || !formData.day || !formData.month || !formData.year}
+                        className={`btn btn-primary mb-0 w-100`}
                       />
                       {/* Dhruv Soni - End - if checkBox selected then enable else disable */}
                     </div>
@@ -562,7 +600,6 @@ function TopBanner() {
                     src="img/tableau-logo.webp"
                     alt="Chandigarh University logo"
                     width={30}
-
                     className="mx-2"
                   />
                   <img
@@ -593,7 +630,6 @@ function TopBanner() {
                     className="mx-4"
                   />
                 </div> */}
-
 
                 {/* <div class="helpline d-flex flex-row align-items-center">
                                 <img src="img/phone-icon.svg" alt="phone">
