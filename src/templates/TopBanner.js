@@ -97,7 +97,7 @@ function TopBanner() {
     <section className="hero-banner position-relative" id="home">
       <div
         // top-0 -> top-1 align section at bottom
-        className="banner-overlay position-absolute top-1 pb-4 start-0 end-0 bottom-0 pt-5"
+        className="banner-overlay position-absolute top-1 pb-4 start-0 end-0 pt-3"
         style={{ zIndex: 1 }}
       >
         <div className="container">
@@ -169,9 +169,7 @@ function TopBanner() {
                           value={formData.name}
                           onChange={handleChange}
                         />
-                        {errors.name && (
-                          <p className="text-danger mb-0">{errors.name}</p>
-                        )}
+                        <div style={{ visibility: errors.name?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.name}</div>
                         <span
                           id="rfvStudentName"
                           style={{ visibility: "hidden" }}
@@ -192,9 +190,7 @@ function TopBanner() {
                           value={formData.email}
                           onChange={handleChange}
                         />
-                        {errors.email && (
-                          <p className="text-danger mb-0">{errors.email}</p>
-                        )}
+                        <div style={{ visibility: errors.email?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.email}</div>
                         <span id="rfvEmailId" style={{ visibility: "hidden" }}>
                           Enter Email Id
                         </span>
@@ -221,9 +217,7 @@ function TopBanner() {
                           value={formData.mobile}
                           onChange={handleChange}
                         />
-                        {errors.mobile && (
-                          <p className="text-danger mb-0">{errors.mobile}</p>
-                        )}
+                          <div style={{ visibility: errors.mobile?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.mobile}</div>
                         <span id="rfvMobileNo" style={{ visibility: "hidden" }}>
                           In correct Mobile Number
                         </span>
@@ -252,9 +246,7 @@ function TopBanner() {
                         value={formData.city}
                         onChange={handleChange}
                       />
-                      {errors.city && (
-                        <p className="text-danger mb-0">{errors.city}</p>
-                      )}
+                        <div style={{ visibility: errors.city?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.city}</div>
                       <span id="rfvCity" style={{ visibility: "hidden" }}>
                         Enter City
                       </span>
@@ -277,9 +269,7 @@ function TopBanner() {
                             Online BBA in Business Analytics
                           </option>
                         </select>
-                        {errors.course && (
-                          <p className="text-danger mb-0">{errors.course}</p>
-                        )}
+                          <div style={{ visibility: errors.course?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.course}</div>
                         <span id="rfvProgram" style={{ visibility: "hidden" }}>
                           Select Program
                         </span>
@@ -362,7 +352,7 @@ function TopBanner() {
                         </span>
                       </div>
                     </div>
-                    {errors.dob && <p className="text-danger mb-0">{errors.dob}</p>}
+                    <div style={{ visibility: errors.dob?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.dob}</div>
                   </div>
 
                   {/* Dhruv Soni - start - add checkBox for terms condition */}
@@ -392,9 +382,7 @@ function TopBanner() {
                       </span>
                       {/* &nbsp; agree with terms and conditions */}
                     </label>
-                    {errors.agree && (
-                      <p className="text-danger mb-0">{errors.agree}</p>
-                    )}
+                      <div style={{ visibility: errors.agree?'visible':"hidden" }} className="text-danger mb-0 form-error">{errors.agree}</div>
                   </div>
                   {/* Dhruv Soni - end - add checkBox for terms condition */}
 
@@ -416,7 +404,7 @@ function TopBanner() {
                         value="Register Now"
                         onClick={handleSubmit}
                         id="btnRegisterNow"
-                        className={`btn btn-primary mb-0 w-100`}
+                        className={`btn btn-primary mb-0 w-100 mt-2`}
                       />
                       {/* Dhruv Soni - End - if checkBox selected then enable else disable */}
                     </div>

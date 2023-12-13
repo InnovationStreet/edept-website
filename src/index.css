@@ -635,6 +635,13 @@ header.is-fixed {
 .carousel-dark .carousel-control-prev-icon {
   filter: initial;
 }
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: initial;
+  background-color: red;
+    color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 .banner-content {
   width: 486px;
   position: relative;
@@ -929,7 +936,10 @@ select {
 .program-outcomes .card img {
   margin-bottom: 30px;
 }
-
+.program-outcomes .card img {
+  width: 350px;
+  height: 300px;
+}
 .cu-advantages {
 }
 

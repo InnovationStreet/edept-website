@@ -61,3 +61,9 @@
   transform: skewX(165deg);
   left: 54px;
 } */
+.form-error{
+  margin-top: 2px;
+  font-size: 10px !important;
+  height: 10px;
+  margin-bottom: -10px !important;
+}

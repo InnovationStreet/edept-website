@@ -69,7 +69,7 @@ function OurPrograms() {
                       
                     </div>
                     
-                    <div  >
+                    <div className="p-2" >
                       <img
                         src="img/python-logo.webp"
                         alt="Chandigarh University logo"
@@ -164,7 +164,7 @@ function OurPrograms() {
                       </ul>
                     </div>
                     
-                    <div>
+                    <div className="p-2" >
                       <img
                         src="img/python-logo.webp"
                         alt="Chandigarh University logo"
