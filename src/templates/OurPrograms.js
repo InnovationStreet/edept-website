@@ -59,36 +59,35 @@ function OurPrograms() {
                             <li className="text-white">
                               Learn top analytical tools like Tableau, My SQL,
                               Python, any many more
-                              <div>
-                                <img
-                                  src="img/python-logo.webp"
-                                  alt="Chandigarh University logo"
-                                  width={32}
-                                  className="mx-2"
-                                />
-                                <img
-                                  src="img/tableau-logo.webp"
-                                  alt="Chandigarh University logo"
-                                  width={30}
-                                  className="mx-2"
-                                />
-                                <img
-                                  src="img/MySQL-Logo.svg"
-                                  alt="Chandigarh University logo"
-                                  width={60}
-                                  className="mx-1"
-                                />
-                              </div>
                             </li>
                           </ul>
                         </li>
-                        {/* <li className="totalFee">
-                      <span className="del">INR 32500</span>
-                      <span className="animate-text">
-                        After 30% Early Bird Discount on Programme Sem Fee
-                      </span>
-                    </li> */}
+                        
+                        
                       </ul>
+
+                      
+                    </div>
+                    
+                    <div  >
+                      <img
+                        src="img/python-logo.webp"
+                        alt="Chandigarh University logo"
+                        width={32}
+                        className="mx-2"
+                      />
+                      <img
+                        src="img/tableau-logo.webp"
+                        alt="Chandigarh University logo"
+                        width={30}
+                        className="mx-2"
+                      />
+                      <img
+                        src="img/MySQL-Logo.svg"
+                        alt="Chandigarh University logo"
+                        width={60}
+                        className="mx-1"
+                      />
                     </div>
                     <div className="card-footer">
                       <div className="row g-0 d-flex align-items-center">
@@ -128,7 +127,7 @@ function OurPrograms() {
                           Eligibility:
                           <span>
                             {" "}
-                            : Bachelor's degree from any stream with minimum 50%
+                             Bachelor's degree from any stream with minimum 50%
                             marks from recognized University/Institution.
                             Graduates from professional programs like CA, ICWA
                             etc can also apply.
@@ -151,30 +150,11 @@ function OurPrograms() {
                             <li className="text-white">
                               Learn top analytical tools like Tableau, My SQL,
                               Python, any many more
-                              <div>
-                                <img
-                                  src="img/python-logo.webp"
-                                  alt="Chandigarh University logo"
-                                  width={32}
-                                  className="mx-2"
-                                />
-                                <img
-                                  src="img/tableau-logo.webp"
-                                  alt="Chandigarh University logo"
-                                  width={30}
-                                  className="mx-2"
-                                />
-                                <img
-                                  src="img/MySQL-Logo.svg"
-                                  alt="Chandigarh University logo"
-                                  width={60}
-                                  className="mx-1"
-                                />
-                              </div>
                             </li>
                           </ul>
                           <br />
                         </li>
+                       
                         {/* <li className="totalFee">
                       <span className="del">INR 32500</span>
                       <span className="animate-text">
@@ -182,6 +162,27 @@ function OurPrograms() {
                       </span>
                     </li> */}
                       </ul>
+                    </div>
+                    
+                    <div>
+                      <img
+                        src="img/python-logo.webp"
+                        alt="Chandigarh University logo"
+                        width={32}
+                        className="mx-2"
+                      />
+                      <img
+                        src="img/tableau-logo.webp"
+                        alt="Chandigarh University logo"
+                        width={30}
+                        className="mx-2"
+                      />
+                      <img
+                        src="img/MySQL-Logo.svg"
+                        alt="Chandigarh University logo"
+                        width={60}
+                        className="mx-1"
+                      />
                     </div>
                     <div className="card-footer">
                       <div className="row g-0 d-flex align-items-center">

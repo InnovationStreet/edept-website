@@ -23,6 +23,20 @@ function TopBanner() {
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
+    
+    e.preventDefault();
+    const newErrors = {};
+    // Simple validation
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
+    if (!formData.city.trim()) newErrors.city = "City is required";
+    if (!formData.course.trim()) newErrors.course = "Course is required";
+    if (!formData.dobDay || !formData.dobMonth || !formData.dobYear) {
+      newErrors.dob = "Date of birth is required";
+    }
+    if (!formData.agree) newErrors.agree = "You must agree to register";
+    setErrors(newErrors);
   };
 
   const handleSubmit = async (e) => {
