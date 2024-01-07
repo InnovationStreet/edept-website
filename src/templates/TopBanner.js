@@ -29,7 +29,19 @@ function TopBanner() {
     // Simple validation
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
+    else{
+      let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!regEmail.test(formData.email.trim())) {
+        newErrors.email = "Email is invalid";
+      }
+    }
     if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
+    else{
+      const mobile = formData.mobile.trim();
+      if (mobile.length!==10 || !mobile.match('[0-9]')) {
+        newErrors.mobile = "Mobile number is invalid";
+      }
+    }
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.course.trim()) newErrors.course = "Course is required";
     if (!formData.dobDay || !formData.dobMonth || !formData.dobYear) {
@@ -199,7 +211,7 @@ function TopBanner() {
                         </span>
                         <img
                           id="imgLoading_Email"
-                          src="assets/images/loading.svg"
+                          src="assets/img/loading.svg"
                         />
                         <img id="imgLoading_Email_Ok" />
                       </div>
@@ -229,7 +241,7 @@ function TopBanner() {
                         </span>
                         <img
                           id="imgLoading_Mobile"
-                          src="assets/images/loading.svg"
+                          src="assets/img/loading.svg"
                         />
                         <img id="imgLoading_Mobile_Ok" />
                       </div>
