@@ -355,8 +355,8 @@ function TopBanner() {
                           required
                         >
                           <option value={0}>YYYY</option>
-                          {[...Array(30)].map((e, i) => (
-                            <option value={i + 1980}>{i + 1980}</option>
+                          {[...Array(64)].map((e, i) => (
+                            <option value={i + 1960}>{i + 1960}</option>
                           ))}
                         </select>
                         <span id="rfvYear" style={{ visibility: "hidden" }}>
