@@ -7,9 +7,11 @@ import InputField from "../components/InputField/InputField";
 import Select from "../components/Select/Select";
 import Checkbox from "../components/Checkbox/Checkbox";
 import Swal from "sweetalert2";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function UserForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigate = useNavigate();
   const initialValues = {
     name: "",
     email: "",
@@ -64,13 +66,14 @@ function UserForm() {
                   .then((res) => res.json)
                   .then((result) => {
                     console.log(result);
-                    Swal.fire({
-                      icon: "success",
-                      title: "Success!",
-                      text: "Registration successful.",
-                      showConfirmButton: false,
-                      showCloseButton: true,
-                    });
+                    navigate("/success", { replace: true });
+                    // Swal.fire({
+                    //   icon: "success",
+                    //   title: "Success!",
+                    //   text: "Registration successful.",
+                    //   showConfirmButton: false,
+                    //   showCloseButton: true,
+                    // });
                   })
                   .catch((error) => {
                     console.log(error);
