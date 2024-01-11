@@ -35,7 +35,18 @@ function UserForm() {
     dob: Yup.string().required("Date of birth is required"),
     agree: Yup.bool().oneOf([true], "You must agree to register"),
   });
-
+  let affiliate = "";
+  const href = window.location.href;
+  if (href.includes("onlinecu3272")) {
+    console.log("affilate", "onlinecu3272");
+    affiliate = "3272";
+  } else if (href.includes("onlinecu3958")) {
+    console.log("affilate", "onlinecu3958");
+    affiliate = "3958";
+  } else if (href.includes("onlinecu3961")) {
+    console.log("affilate", "onlinecu3961");
+    affiliate = "3961";
+  }
   return (
     <div className="container">
       <div className="register-form-container" id="div_regform">
@@ -54,6 +65,7 @@ function UserForm() {
                   city: values.city,
                   program: values.course,
                   dob: values.dob,
+                  affiliate 
                 };
                 console.log("data", data);
                 fetch("https://onlinecu.edept.co/send-mail.php", {
