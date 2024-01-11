@@ -65,7 +65,7 @@ function UserForm() {
                   city: values.city,
                   program: values.course,
                   dob: values.dob,
-                  affiliate 
+                  affiliate,
                 };
                 console.log("data", data);
                 fetch("https://onlinecu.edept.co/send-mail.php", {
@@ -78,14 +78,22 @@ function UserForm() {
                   .then((res) => res.json)
                   .then((result) => {
                     console.log(result);
-                    navigate("/success", { replace: true });
-                    // Swal.fire({
-                    //   icon: "success",
-                    //   title: "Success!",
-                    //   text: "Registration successful.",
-                    //   showConfirmButton: false,
-                    //   showCloseButton: true,
-                    // });
+                    fetch("https://onlinecu.edept.co/admin-apis.php", {
+                      method: "POST",
+                      headers: {
+                        "content-type": "application/json",
+                      },
+                      body: JSON.stringify(data),
+                    })
+                      .then((res) => res.json)
+                      .then((result2) => {
+                        console.log(result2);
+                        navigate("/success", { replace: true });
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                        navigate("/success", { replace: true });
+                      });
                   })
                   .catch((error) => {
                     console.log(error);
