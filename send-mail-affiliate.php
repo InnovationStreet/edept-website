@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars($_POST["phone"]);
     $dob = htmlspecialchars($_POST["dob"]);
     $program = htmlspecialchars($_POST["program"]);
-    $affliate = htmlspecialchars($_POST["affliate"]);
     // // Validate email
     // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     //     die("Invalid email format");
@@ -23,15 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Email details
     $to = "marketing@edept.co";
     // $to = "dhruvsoni7220@gmail.com";
-    if($affliate==='3272'){
-        $subject = "New Affiliate Lead from 3272 Generate for Chandigarh University";
-    }else if($affliate==='3958'){
-        $subject = "New Affiliate Lead from 3958 Generate for Chandigarh University";
-    }else if($affliate==='3961'){
-        $subject = "New Affiliate Lead from 3961 Generate for Chandigarh University";
-    }else{
-        $subject = "New Lead Generate for Chandigarh University";
-    }
+    $subject = "New Affiliate Lead Generate for Chandigarh University";
 
     // Email content (custom template)
     $message = "
