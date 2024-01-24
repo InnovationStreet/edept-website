@@ -15,6 +15,9 @@ const Success = () => {
   } else if (href.includes("onlinecu3961")) {
     console.log("affilate", "onlinecu3961");
     affiliate = "3961";
+  } else if (href.includes("onlinecu4214")) {
+    console.log("affilate", "onlinecu4214");
+    affiliate = "4214";
   }
   if (!affiliate) {
     console.log("converstion tag fired");
