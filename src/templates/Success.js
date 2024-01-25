@@ -58,6 +58,17 @@ const Success = () => {
       ) : (
         ""
       )}
+
+      {affiliate === "2323" ? (
+        // eslint-disable-next-line jsx-a11y/alt-text
+        <img
+          src="https://ttrk.ringocount.com/pixel?adid=65b2058b411ba86eeb0cc8c3"
+          width="1"
+          height="1"
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };
