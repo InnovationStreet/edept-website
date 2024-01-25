@@ -8,9 +8,11 @@ import Select from "../components/Select/Select";
 import Checkbox from "../components/Checkbox/Checkbox";
 import Swal from "sweetalert2";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { getAffiliate } from "../utils/Affilitate";
 
 function UserForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formOk, setFormOk] = useState(false);
   const navigate = useNavigate();
   const initialValues = {
     name: "",
@@ -35,21 +37,22 @@ function UserForm() {
     dob: Yup.string().required("Date of birth is required"),
     agree: Yup.bool().oneOf([true], "You must agree to register"),
   });
-  let affiliate = "";
   const href = window.location.href;
-  if (href.includes("onlinecu3272")) {
-    console.log("affilate", "onlinecu3272");
-    affiliate = "3272";
-  } else if (href.includes("onlinecu3958")) {
-    console.log("affilate", "onlinecu3958");
-    affiliate = "3958";
-  } else if (href.includes("onlinecu3961")) {
-    console.log("affilate", "onlinecu3961");
-    affiliate = "3961";
-  } else if (href.includes("onlinecu4214")) {
-    console.log("affilate", "onlinecu4214");
-    affiliate = "4214";
-  }
+  // if (href.includes("onlinecu3272")) {
+  //   console.log("affilate", "onlinecu3272");
+  //   affiliate = "3272";
+  // } else if (href.includes("onlinecu3958")) {
+  //   console.log("affilate", "onlinecu3958");
+  //   affiliate = "3958";
+  // } else if (href.includes("onlinecu3961")) {
+  //   console.log("affilate", "onlinecu3961");
+  //   affiliate = "3961";
+  // } else if (href.includes("onlinecu4214")) {
+  //   console.log("affilate", "onlinecu4214");
+  //   affiliate = "4214";
+  // }
+
+  let affiliate = getAffiliate(href);
   return (
     <div className="container">
       <div className="register-form-container" id="div_regform">
@@ -60,6 +63,7 @@ function UserForm() {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
+                setFormOk(true)
                 console.log("values", values);
                 const data = {
                   name: values.name,
@@ -178,6 +182,7 @@ function UserForm() {
                   <div className="col-span-6 flex justify-center">
                     <button
                       type="submit"
+                      disabled={formOk}
                       onClick={() => setFormSubmitted(true)}
                       className="btn btn-primary mb-0 w-100 mt-2"
                     >

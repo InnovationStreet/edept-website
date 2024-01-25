@@ -17,7 +17,11 @@ root.render(
       <Route
         path="/"
         render={({ location }) => {
+          console.log("GTAG Fired On Route Change")
           window.gtag("config", "AW-11454303460", {
+            page_path: location.pathname + location.search,
+          });
+          window.gtag("config", "G-6V6MWMWD1T", {
             page_path: location.pathname + location.search,
           });
         }}
