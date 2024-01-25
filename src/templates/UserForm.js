@@ -75,7 +75,7 @@ function UserForm() {
                   affiliate,
                 };
                 console.log("data", data);
-                fetch("https://onlinecu.edept.co/send-mail.php", {
+                fetch("https://edept.co/apps/apis/send-mail.php", {
                   method: "POST",
                   headers: {
                     "content-type": "application/json",
@@ -85,7 +85,7 @@ function UserForm() {
                   .then((res) => res.json)
                   .then((result) => {
                     console.log(result);
-                    fetch("https://onlinecu.edept.co/admin-apis.php", {
+                    fetch("https://edept.co/apps/apis/admin-apis.php", {
                       method: "POST",
                       headers: {
                         "content-type": "application/json",
