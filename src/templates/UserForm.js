@@ -7,10 +7,14 @@ import InputField from "../components/InputField/InputField";
 import Select from "../components/Select/Select";
 import Checkbox from "../components/Checkbox/Checkbox";
 import Swal from "sweetalert2";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { getAffiliate } from "../utils/Affilitate";
 
 function UserForm() {
+  const location = useLocation();
+  const search = new URLSearchParams(location.search);
+  const utmvendor = search.get("utmvendor") || "";
+  const utmpublisher = search.get("utmpublisher") || "";
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formOk, setFormOk] = useState(false);
   const navigate = useNavigate();
@@ -73,6 +77,8 @@ function UserForm() {
                   program: values.course,
                   dob: values.dob,
                   affiliate,
+                  utmvendor,
+                  utmpublisher
                 };
                 console.log("data", data);
                 fetch("https://edept.co/apps/apis/send-mail.php", {
