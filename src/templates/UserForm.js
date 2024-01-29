@@ -1,13 +1,11 @@
 import "../App.css";
 import React, { useState } from "react";
-import axios from "axios";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "../components/InputField/InputField";
 import Select from "../components/Select/Select";
 import Checkbox from "../components/Checkbox/Checkbox";
-import Swal from "sweetalert2";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getAffiliate } from "../utils/Affilitate";
 
 function UserForm() {
@@ -42,20 +40,6 @@ function UserForm() {
     agree: Yup.bool().oneOf([true], "You must agree to register"),
   });
   const href = window.location.href;
-  // if (href.includes("onlinecu3272")) {
-  //   console.log("affilate", "onlinecu3272");
-  //   affiliate = "3272";
-  // } else if (href.includes("onlinecu3958")) {
-  //   console.log("affilate", "onlinecu3958");
-  //   affiliate = "3958";
-  // } else if (href.includes("onlinecu3961")) {
-  //   console.log("affilate", "onlinecu3961");
-  //   affiliate = "3961";
-  // } else if (href.includes("onlinecu4214")) {
-  //   console.log("affilate", "onlinecu4214");
-  //   affiliate = "4214";
-  // }
-
   let affiliate = getAffiliate(href);
   return (
     <div className="container">
@@ -67,8 +51,7 @@ function UserForm() {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
-                setFormOk(true)
-                console.log("values", values);
+                setFormOk(true);
                 const data = {
                   name: values.name,
                   email: values.email,
@@ -78,10 +61,10 @@ function UserForm() {
                   dob: values.dob,
                   affiliate,
                   utmvendor,
-                  utmpublisher
+                  utmpublisher,
                 };
-                console.log("data", data);
-                fetch("https://edept.co/apps/apis/send-mail.php", {
+
+                fetch("https://edept.co/apps/apis/admin-apis.php", {
                   method: "POST",
                   headers: {
                     "content-type": "application/json",
@@ -89,27 +72,18 @@ function UserForm() {
                   body: JSON.stringify(data),
                 })
                   .then((res) => res.json)
-                  .then((result) => {
-                    console.log(result);
-                    fetch("https://edept.co/apps/apis/admin-apis.php", {
-                      method: "POST",
-                      headers: {
-                        "content-type": "application/json",
-                      },
-                      body: JSON.stringify(data),
-                    })
-                      .then((res) => res.json)
-                      .then((result2) => {
-                        console.log(result2);
-                        navigate("/success", { replace: true });
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                        navigate("/success", { replace: true });
-                      });
+                  .then((result2) => {
+                    navigate("/success", {
+                      replace: true,
+                      state: { utmvendor },
+                    });
                   })
                   .catch((error) => {
                     console.log(error);
+                    navigate("/success", {
+                      replace: true,
+                      state: { utmvendor },
+                    });
                   });
               }}
             >

@@ -1,34 +1,20 @@
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { getAffiliate } from "../utils/Affilitate";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ADCANPUS_VENDOR, ADCOUNTRY_VENDOR, GOOGLE_VENDOR } from "./Vendors";
+import { forAllVendors, forGoogleVendor } from "./VendorPixels";
 
 const Success = () => {
-  console.log("this tag fired all the time");
-  window.gtag("config", "G-6V6MWMWD1T");
-  console.log("window.location.href", window.location.href);
-  const href = window.location.href;
-  // let affiliate = "";
-  // if (href.includes("onlinecu3272")) {
-  //   console.log("affilate", "onlinecu3272");
-  //   affiliate = "3272";
-  // } else if (href.includes("onlinecu3958")) {
-  //   console.log("affilate", "onlinecu3958");
-  //   affiliate = "3958";
-  // } else if (href.includes("onlinecu3961")) {
-  //   console.log("affilate", "onlinecu3961");
-  //   affiliate = "3961";
-  // } else if (href.includes("onlinecu4214")) {
-  //   console.log("affilate", "onlinecu4214");
-  //   affiliate = "4214";
-  // }
-
-  let affiliate = getAffiliate(href);
-  if (!affiliate) {
-    console.log("converstion tag fired if no affiliate");
-    window.gtag("event", "conversion", {
-      send_to: "AW-11454303460/N2BRCPaOzYYZEOSZ69Uq",
-    });
+  const {
+    state: { utmvendor },
+  } = useLocation();
+  //run for all vendors
+  console.log("google tag fired for all vendors.");
+  forAllVendors();
+  //run for google vendors
+  if (utmvendor === GOOGLE_VENDOR) {
+    console.log("google conversion fired.");
+    forGoogleVendor();
   }
   Swal.fire({
     icon: "success",
@@ -48,7 +34,7 @@ const Success = () => {
   }, []);
   return (
     <>
-      {affiliate ? (
+      {utmvendor === ADCANPUS_VENDOR ? (
         // eslint-disable-next-line jsx-a11y/alt-text
         <img
           src="https://tracking.adcanopus.com/aff_l?offer_id=37699"
@@ -58,8 +44,7 @@ const Success = () => {
       ) : (
         ""
       )}
-
-      {affiliate === "2323" ? (
+      {utmvendor === ADCOUNTRY_VENDOR ? (
         // eslint-disable-next-line jsx-a11y/alt-text
         <img
           src="https://ttrk.ringocount.com/pixel?adid=65b2058b411ba86eeb0cc8c3"
