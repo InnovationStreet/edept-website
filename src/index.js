@@ -21,7 +21,7 @@ root.render(
           window.gtag("config", "AW-11454303460", {
             page_path: location.pathname + location.search,
           });
-          window.gtag("config", "G-6V6MWMWD1T", {
+          window.gtag("config", "G-SGWJH10LNL", {
             page_path: location.pathname + location.search,
           });
         }}

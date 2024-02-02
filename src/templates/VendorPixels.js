@@ -1,5 +1,5 @@
 const forAllVendors = () => {
-  window.gtag("config", "G-6V6MWMWD1T");
+  window.gtag("config", "G-SGWJH10LNL");
 };
 const forGoogleVendor = () => {
   window.gtag("event", "conversion", {
