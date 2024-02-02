@@ -75,14 +75,14 @@ function UserForm() {
                   .then((result2) => {
                     navigate("/success", {
                       replace: true,
-                      state: { utmvendor },
+                      state: { utmvendor, utmpublisher },
                     });
                   })
                   .catch((error) => {
                     console.log(error);
                     navigate("/success", {
                       replace: true,
-                      state: { utmvendor },
+                      state: { utmvendor, utmpublisher },
                     });
                   });
               }}

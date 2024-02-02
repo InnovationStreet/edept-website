@@ -6,7 +6,7 @@ import { forAllVendors, forGoogleVendor } from "./VendorPixels";
 
 const Success = () => {
   const {
-    state: { utmvendor },
+    state: { utmvendor, utmpublisher },
   } = useLocation();
   //run for all vendors
   console.log("google tag fired for all vendors.");
@@ -29,7 +29,10 @@ const Success = () => {
   useEffect(() => {
     setTimeout(() => {
       Swal.close();
-      navigate("/", { replace: true });
+      navigate({
+        pathname: "/",
+        search: `?utmvendor=${utmvendor}&utmpublisher=${utmpublisher}`,
+      });
     }, 3000);
   }, []);
   return (
