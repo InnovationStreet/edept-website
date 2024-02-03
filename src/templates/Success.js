@@ -29,10 +29,27 @@ const Success = () => {
   useEffect(() => {
     setTimeout(() => {
       Swal.close();
-      navigate({
-        pathname: "/",
-        search: `?utmvendor=${utmvendor}&utmpublisher=${utmpublisher}`,
-      });
+      let search = null;
+      const searches = [];
+      if (utmvendor) {
+        searches.push(`utmvendor=${utmvendor}`);
+      }
+      if (utmpublisher) {
+        searches.push(`utmpublisher=${utmpublisher}`);
+      }
+      if (searches.length) {
+        search = "?" + searches.join("&");
+      }
+      if (search) {
+        navigate({
+          pathname: "/",
+          search: search,
+        });
+      } else {
+        navigate({
+          pathname: "/",
+        });
+      }
     }, 3000);
   }, []);
   return (
