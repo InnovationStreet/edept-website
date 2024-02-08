@@ -60,8 +60,6 @@ function ProgramHighlights() {
               <div className="card news-card shadow border-0 position-relative">
                 <div className="card-body p-4 clearfix">
                   <a
-                    href="https://news.cuchd.in/2023/07/chandigarh-university-is-highest-ranked.html"
-                    target="_blank"
                     className="stretched-link"
                   >
                     {item.heading}

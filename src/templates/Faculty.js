@@ -339,6 +339,8 @@ function Faculty() {
         <div className="row position-relative">
           <div className="col-md-4 text-center text-md-start position-relative">
             <img
+                style={{ objectFit: 'cover', maxWidth: '100%', maxHeight: '100%' }}
+
               width={50}
               height={50}
               className="img-fluid lazyload rounded-3"

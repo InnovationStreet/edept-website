@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
 // import PostgraduatePrograms from "./templates/PostgraduatePrograms";
 // import UndergraduatePrograms from "./templates/UndergraduatePrograms";
@@ -17,10 +18,27 @@ import TopBanner from "./templates/TopBanner";
 import OurNumbers from "./templates/OurNumbers";
 import WhyStudyOnline from "./templates/WhyStudyOnline";
 import TrainerProfile from "./templates/TrainersProfile";
+import OnlineMBAProgram from "./templates/OnlineMbaProgram";
+import OnlineDegreeEquivalence from "./templates/OnlineDegreeEquivalence";
 // import SocialLinks from "./templates/SocialLinks";
 // import AttendCampus from "./templates/AttendCampus";
 
 function App() {
+  const [showApplyButton, setShowApplyButton] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolledPastTopBanner = window.scrollY > 200; // Adjust the value based on when you want to hide the button
+
+      setShowApplyButton(!isScrolledPastTopBanner);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div>
       {/* Google Tag Manager (noscript) */}
@@ -33,6 +51,12 @@ function App() {
       <Header />
       <main>
         <TopBanner />
+        
+          {/* <div className="floating-button">
+            <a className="btn btn-primary btn-sm" href="#home">
+              Apply Now
+            </a>
+          </div> */}
         <OurPrograms />
         <WhyStudyOnline />
         {/* <Advantages /> */}
@@ -40,6 +64,8 @@ function App() {
         {/* <AboutEdept /> */}
         <ProgramOutcomes />
         <ProgramHighlights />
+        <OnlineMBAProgram />
+        <OnlineDegreeEquivalence />
         <NationalAndInternationalBodies />
         <Faculty />
         {/* <AttendCampus /> */}

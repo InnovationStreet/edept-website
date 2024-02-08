@@ -61,9 +61,30 @@
   transform: skewX(165deg);
   left: 54px;
 } */
-.form-error{
+.form-error {
   margin-top: 2px;
   font-size: 10px !important;
   height: 10px;
   margin-bottom: -10px !important;
 }
+
+.captcha-error {
+  margin-top: 2px;
+  font-size: 10px !important;
+  height: 10px;
+}
+
+ol li {
+  display: list-item !important;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 999;
+}
+

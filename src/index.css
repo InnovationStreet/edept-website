@@ -385,6 +385,72 @@ footer.pb-5 {
   margin-bottom: 8px;
   font-weight: 600;
 }
+
+.border-item {
+  border: 2px solid white;
+  position: relative;
+}
+
+.border-item:before,
+.border-item:after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: white;
+  border: 2px solid white; 
+  line-height: 12px;
+  text-align: center;
+  top: 5px;
+}
+
+.border-item:before {
+  left: 5px;
+}
+
+.border-item:after {
+  right: 5px;
+}
+
+.inner-border {
+  position: relative;
+  border: 2px solid white; /* Assuming $color-alpha is defined elsewhere */
+}
+
+.inner-border:before,
+.inner-border:after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: white; /* Assuming $color-alpha is defined elsewhere */
+  border: 2px solid white; /* Assuming $color-alpha is defined elsewhere */
+  line-height: 12px;
+  bottom: -2px;
+  text-align: center;
+}
+
+.inner-border:before {
+  left: -2px;
+}
+
+.inner-border:after {
+  right: -2px;
+}
+
+.inner-border-certificate{
+  color: rgb(226, 226, 226)!important; 
+  border: 2px solid rgb(226, 226, 226)!important;
+}
+
+.border-item-certificate{
+  color: rgb(226, 226, 226)!important; 
+  border: 2px solid rgb(226, 226, 226)!important;
+}
+
+
 @media (max-width: 991px) {
   .footer-ft-data {
     align-items: flex-start;
@@ -1185,6 +1251,23 @@ select {
 .social-links ul li a span {
   font-size: 15px;
 }
+
+.section-heading h2 {
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: 700;
+  color: var(--bs-text-dark);
+}
+
+.content-wrapper{
+  height: 110px
+}
+
+.points-box::before {
+  content: "#"; /* Content to be inserted before each .points-box */
+  color: red; /* Color of the hash symbol */
+  margin-right: 5px; /* Adjust as needed */
+}
 /* End Fixed Phone Icon */
 
 @media (max-width: 1400px) {
@@ -1361,6 +1444,13 @@ select {
   }
   header.is-fixed {
     top: -90px;
+  }
+
+  .equal-recognition{
+    text-align: center;
+  }
+  .equivalence{
+    font-size: 2rem!important;
   }
 }
 

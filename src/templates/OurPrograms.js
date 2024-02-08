@@ -26,9 +26,14 @@ function OurPrograms() {
               <div className="row gy-4">
                 <div className="col-lg-4 col-sm-6 equal-height">
                   <div className="card program-card border-0 overflow-hidden bg-danger ">
-                    <div className="card-body ">
+                    <div className="bg-light text-center py-2">
+                      <h3 className="text-dark mb-0 font-weight-bold fs-5">
+                        Online BBA in <br /> Business Analytics
+                      </h3>
+                    </div>
+                    <div className="card-body">
                       <div className="h-60 ">
-                        <h4 className="text-white">
+                        <h4 className="text-white font-weight-bold">
                           3 Years Online BBA Program with specialization in
                           Business Analytics
                         </h4>
@@ -41,10 +46,12 @@ function OurPrograms() {
                             10+2 from any stream with minimum 50% marks, from a
                             recognized board/university/council.
                           </span>
-                        </li>
+                        </li><br />
                         <li className="text-white">
                           Duration:<span> 3 years (6 semesters)</span>
                         </li>
+                        <hr className="border-white"></hr>
+
                         <li className="fw-bold mt-2 text-white">
                           Highlights:
                           <ul className="p-0 m-0 ">
@@ -62,14 +69,10 @@ function OurPrograms() {
                             </li>
                           </ul>
                         </li>
-                        
-                        
                       </ul>
-
-                      
                     </div>
-                    
-                    <div className="p-2" >
+
+                    <div className="p-2">
                       <img
                         src="img/python-logo.webp"
                         alt="Chandigarh University logo"
@@ -115,6 +118,11 @@ function OurPrograms() {
 
                 <div className="col-lg-4 col-sm-6">
                   <div className="card program-card border-0 overflow-hidden  bg-danger ">
+                  <div className="bg-light text-center py-2">
+                      <h3 className="text-dark mb-0 font-weight-bold fs-5">
+                        Online MBA in <br /> Business Analytics
+                      </h3>
+                    </div>
                     <div className="card-body">
                       <div className="h-60">
                         <h4 className="text-white">
@@ -127,15 +135,17 @@ function OurPrograms() {
                           Eligibility:
                           <span>
                             {" "}
-                             Bachelor's degree from any stream with minimum 50%
+                            Bachelor's degree from any stream with minimum 50%
                             marks from recognized University/Institution.
                             Graduates from professional programs like CA, ICWA
                             etc can also apply.
-                          </span>
-                        </li>
-                        <li className="text-white">
+                          </span><br /><br />
+                          <span className="text-white">
                           Duration:<span> 2 years (4 semesters)</span>
+                        </span>
                         </li>
+                        
+                        <hr className="border-white"></hr>
                         <li className="fw-bold mt-2 text-white">
                           Highlights:
                           <ul className="p-0 m-0">
@@ -154,7 +164,7 @@ function OurPrograms() {
                           </ul>
                           <br />
                         </li>
-                       
+
                         {/* <li className="totalFee">
                       <span className="del">INR 32500</span>
                       <span className="animate-text">
@@ -163,8 +173,8 @@ function OurPrograms() {
                     </li> */}
                       </ul>
                     </div>
-                    
-                    <div className="p-2" >
+
+                    <div className="p-2">
                       <img
                         src="img/python-logo.webp"
                         alt="Chandigarh University logo"
