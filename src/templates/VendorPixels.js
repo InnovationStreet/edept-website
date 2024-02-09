@@ -6,4 +6,9 @@ const forGoogleVendor = () => {
     send_to: "AW-11454303460/N2BRCPaOzYYZEOSZ69Uq",
   });
 };
-export { forAllVendors, forGoogleVendor };
+
+const facebookPageView = () => {
+  window.fbq("track", "PageView");
+};
+
+export { forAllVendors, forGoogleVendor, facebookPageView };

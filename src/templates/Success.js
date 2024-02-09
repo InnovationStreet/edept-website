@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ADCANPUS_VENDOR, ADCOUNTRY_VENDOR, GOOGLE_VENDOR } from "./Vendors";
-import { forAllVendors, forGoogleVendor } from "./VendorPixels";
+import { facebookPageView, forAllVendors, forGoogleVendor } from "./VendorPixels";
 
 const Success = () => {
   const {
@@ -11,6 +11,7 @@ const Success = () => {
   //run for all vendors
   console.log("google tag fired for all vendors.");
   forAllVendors();
+  facebookPageView()
   //run for google vendors
   if (utmvendor === GOOGLE_VENDOR) {
     console.log("google conversion fired.");
