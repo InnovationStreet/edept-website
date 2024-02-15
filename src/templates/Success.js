@@ -51,7 +51,7 @@ const Success = () => {
           pathname: "/",
         });
       }
-    }, 3000);
+    }, 15000);
   }, []);
   return (
     <>

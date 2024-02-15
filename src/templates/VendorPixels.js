@@ -1,5 +1,11 @@
 const forAllVendors = () => {
   window.gtag("config", "G-SGWJH10LNL");
+  
+  window.gtag("event", "conversion", {
+    send_to: "AW-10863313057/X3VFCO6KsJEZEKGBhLwo",
+    value: 1.0,
+    currency: "INR",
+  });
 };
 const forGoogleVendor = () => {
   window.gtag("event", "conversion", {
